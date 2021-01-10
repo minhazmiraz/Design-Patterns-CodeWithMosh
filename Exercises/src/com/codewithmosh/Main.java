@@ -1,5 +1,7 @@
 package com.codewithmosh;
 
+import com.codewithmosh.command.*;
+import com.codewithmosh.command.History;
 import com.codewithmosh.iterator.Iterator;
 import com.codewithmosh.iterator.Product;
 import com.codewithmosh.iterator.ProductCollection;
@@ -67,11 +69,45 @@ public class Main {
         }*/
 
         //Template
-        Window sublimeTextWindow = new SublimeTextWindow();
+        /*Window sublimeTextWindow = new SublimeTextWindow();
         Window vsCodeWindow = new VsCodeWindow();
 
         sublimeTextWindow.close();
-        vsCodeWindow.close();
+        vsCodeWindow.close();*/
+
+        //Command
+        VideoEditor videoEditor = new VideoEditor();
+        History history = new History();
+        UndoCommand undoCommand = new UndoCommand(history);
+        System.out.println(videoEditor);
+
+        LabelCommand labelCommand = new LabelCommand(history, "Mark my word", videoEditor);
+        labelCommand.execute();
+        System.out.println(videoEditor);
+
+        ContrastCommand contrastCommand = new ContrastCommand(history, 1.5f, videoEditor);
+        contrastCommand.execute();
+        System.out.println(videoEditor);
+
+        labelCommand = new LabelCommand(history, "Hello World", videoEditor);
+        labelCommand.execute();
+        System.out.println(videoEditor);
+
+        contrastCommand = new ContrastCommand(history, 5.5f, videoEditor);
+        contrastCommand.execute();
+        System.out.println(videoEditor);
+
+        undoCommand.execute();
+        System.out.println(videoEditor);
+
+        undoCommand.execute();
+        System.out.println(videoEditor);
+
+        undoCommand.execute();
+        System.out.println(videoEditor);
+
+        undoCommand.execute();
+        System.out.println(videoEditor);
 
     }
 }
