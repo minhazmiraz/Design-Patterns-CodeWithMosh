@@ -6,6 +6,7 @@ import com.codewithmosh.iterator.Iterator;
 import com.codewithmosh.iterator.Product;
 import com.codewithmosh.iterator.ProductCollection;
 import com.codewithmosh.memento.*;
+import com.codewithmosh.observer.*;
 import com.codewithmosh.state.DirectionService;
 import com.codewithmosh.state.TravelTypeDriving;
 import com.codewithmosh.state.TravelTypeTransit;
@@ -76,7 +77,7 @@ public class Main {
         vsCodeWindow.close();*/
 
         //Command
-        VideoEditor videoEditor = new VideoEditor();
+        /*VideoEditor videoEditor = new VideoEditor();
         History history = new History();
         UndoCommand undoCommand = new UndoCommand(history);
         System.out.println(videoEditor);
@@ -107,7 +108,28 @@ public class Main {
         System.out.println(videoEditor);
 
         undoCommand.execute();
-        System.out.println(videoEditor);
+        System.out.println(videoEditor);*/
+
+        //Observer
+        StockList stockList = new StockList();
+
+        Observer observer1 = new StatusBar(stockList);
+        stockList.addObserver(observer1);
+
+        Observer observer2 = new StockListView(stockList);
+        stockList.addObserver(observer2);
+
+        System.out.println("*******1st Change*********");
+        stockList.addStock(new Stock("stock1", 5));
+
+        System.out.println("*******2nd Change*********");
+        stockList.addStock(new Stock("stock2", 10));
+
+        System.out.println("*******3rd Change*********");
+        stockList.addStock(new Stock("stock3", 15));
+
+        System.out.println("*******4th Change*********");
+        stockList.removeStock(stockList.getStockList().get(2));
 
     }
 }

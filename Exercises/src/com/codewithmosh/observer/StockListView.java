@@ -1,17 +1,16 @@
 package com.codewithmosh.observer;
 
-import java.util.ArrayList;
-import java.util.List;
+public class StockListView implements Observer {
+    private StockList stockList;
 
-public class StockListView {
-    private List<Stock> stocks = new ArrayList<>();
-
-    public void addStock(Stock stock) {
-        stocks.add(stock);
+    public StockListView(StockList stockList) {
+        this.stockList = stockList;
     }
 
-    public void show() {
-        for (var stock : stocks)
+    @Override
+    public void update() {
+        System.out.println("StockListView: ");
+        for(var stock : stockList.getStockList())
             System.out.println(stock);
     }
 }
