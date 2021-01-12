@@ -5,6 +5,7 @@ import com.codewithmosh.command.History;
 import com.codewithmosh.iterator.Iterator;
 import com.codewithmosh.iterator.Product;
 import com.codewithmosh.iterator.ProductCollection;
+import com.codewithmosh.mediator.SignUpDialogBox;
 import com.codewithmosh.memento.*;
 import com.codewithmosh.observer.*;
 import com.codewithmosh.state.DirectionService;
@@ -111,7 +112,7 @@ public class Main {
         System.out.println(videoEditor);*/
 
         //Observer
-        StockList stockList = new StockList();
+        /*StockList stockList = new StockList();
 
         Observer observer1 = new StatusBar(stockList);
         stockList.addObserver(observer1);
@@ -129,7 +130,14 @@ public class Main {
         stockList.addStock(new Stock("stock3", 15));
 
         System.out.println("*******4th Change*********");
-        stockList.removeStock(stockList.getStockList().get(2));
+        stockList.removeStock(stockList.getStockList().get(2));*/
 
+        //Mediator
+        SignUpDialogBox signUpDialogBox = new SignUpDialogBox();
+        signUpDialogBox.setData("Minhaz", "123", true);
+        signUpDialogBox.setData("Minhaz", "123", false);
+        signUpDialogBox.setData("", "123", true);
+        signUpDialogBox.setData("Hello", "", true);
+        signUpDialogBox.setData("Hello", "1", true);
     }
 }
