@@ -1,5 +1,6 @@
 package com.codewithmosh;
 
+import com.codewithmosh.chainOfResponsibility.DataReader;
 import com.codewithmosh.command.*;
 import com.codewithmosh.command.History;
 import com.codewithmosh.iterator.Iterator;
@@ -133,11 +134,18 @@ public class Main {
         stockList.removeStock(stockList.getStockList().get(2));*/
 
         //Mediator
-        SignUpDialogBox signUpDialogBox = new SignUpDialogBox();
+        /*SignUpDialogBox signUpDialogBox = new SignUpDialogBox();
         signUpDialogBox.setData("Minhaz", "123", true);
         signUpDialogBox.setData("Minhaz", "123", false);
         signUpDialogBox.setData("", "123", true);
         signUpDialogBox.setData("Hello", "", true);
-        signUpDialogBox.setData("Hello", "1", true);
+        signUpDialogBox.setData("Hello", "1", true);*/
+
+        //Chain Of Responsibility
+        DataReader dataReader = new DataReader();
+        dataReader.read("File.xls");
+        dataReader.read("File.numbers");
+        dataReader.read("File.qwb");
+        dataReader.read("File");
     }
 }
