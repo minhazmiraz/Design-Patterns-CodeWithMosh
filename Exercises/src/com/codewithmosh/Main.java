@@ -16,6 +16,7 @@ import com.codewithmosh.strategy.*;
 import com.codewithmosh.template.SublimeTextWindow;
 import com.codewithmosh.template.VsCodeWindow;
 import com.codewithmosh.template.Window;
+import com.codewithmosh.visitor.*;
 
 public class Main {
 
@@ -142,10 +143,18 @@ public class Main {
         signUpDialogBox.setData("Hello", "1", true);*/
 
         //Chain Of Responsibility
-        DataReader dataReader = new DataReader();
+        /*DataReader dataReader = new DataReader();
         dataReader.read("File.xls");
         dataReader.read("File.numbers");
         dataReader.read("File.qwb");
-        dataReader.read("File");
+        dataReader.read("File");*/
+
+        //Visitor pattern
+        WavFile wavFile = WavFile.read("File.wav");
+        wavFile.executeFilter(new NoiseReduction());
+        wavFile.executeFilter(new Normalize());
+        wavFile.executeFilter(new Reverb());
+        //new Filter added
+        wavFile.executeFilter(new Contrast());
     }
 }
